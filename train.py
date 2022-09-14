@@ -71,7 +71,9 @@ def train_epoch(model, optimizer, baseline, lr_scheduler, epoch, val_dataset, pr
 
     if not opts.no_tensorboard:
         tb_logger.log_value('learnrate_pg0', optimizer.param_groups[0]['lr'], step)
-
+        
+    training_dataloader = DataLoader(training_dataset, batch_size=opts.batch_size, num_workers=1)
+    
     # Put model in train mode!
     model.train()
     set_decode_type(model, "sampling")
