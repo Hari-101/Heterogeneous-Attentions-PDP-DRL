@@ -40,7 +40,7 @@ def run(opts):
     opts.device = torch.device("cuda:0" if opts.use_cuda else "cpu")
 
     # Figure out what's the problem
-    problem = PDP_Cap
+    problem = PDP_cap
 
     # Load data from load_path
     load_data = {}
