@@ -16,7 +16,7 @@ from nets.attention_model import AttentionModel
 from nets.pointer_network import PointerNetwork, CriticNetworkLSTM
 from utils import torch_load_cpu, load_problem
 
-from problems import PDP
+from problems import PDP_cap
 
 def run(opts):
 
@@ -40,7 +40,7 @@ def run(opts):
     opts.device = torch.device("cuda:0" if opts.use_cuda else "cpu")
 
     # Figure out what's the problem
-    problem = PDP
+    problem = PDP_Cap
 
     # Load data from load_path
     load_data = {}
