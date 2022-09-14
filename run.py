@@ -138,7 +138,7 @@ def run(opts):
 
     # Start the actual training loop
     val_dataset = problem.make_dataset(
-        size=opts.graph_size, num_samples=opts.epoch_size, filename=opts.val_dataset, distribution=opts.data_distribution)
+        size=opts.graph_size, num_samples=opts.epoch_size, distribution=opts.data_distribution)
     
     # Generate the training data
     training_dataset = baseline.wrap_dataset(val_dataset)
