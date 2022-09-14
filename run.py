@@ -169,7 +169,7 @@ def run(opts):
                 problem,
                 tb_logger,
                 opts,
-                train_dataset
+                training_dataset
             )
 
 
