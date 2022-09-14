@@ -103,8 +103,8 @@ class PDP_cap_Dataset(Dataset):
               # }         #For adjusting the average number of orders that can be loaded on the resource at a time
 
             interim_demand = (torch.FloatTensor(size//2).uniform_(0, 1))/size/2
-            self.data = [
-                {
+            instance = {
+                
                     #'loc' refers to the initial location of the resource
                     'loc': torch.FloatTensor(size, 2).uniform_(0, 1),
                     'depot': torch.FloatTensor(2).uniform_(0, 1),
@@ -113,9 +113,8 @@ class PDP_cap_Dataset(Dataset):
                           #ratio etc
                     #---Demand of second-half should be negative of the first half
                     'demand': torch.cat((interim_demand, torch.neg(interim_demand)), -1 )    #Setting avg number of loadable orders at a time
-                }
-                for i in range(num_samples)
-            ]
+            }
+            self.data = [ instance for i in range(num_samples)]
 
         self.size = len(self.data)
 
