@@ -139,9 +139,6 @@ def run(opts):
     # Start the actual training loop
     val_dataset = problem.make_dataset(
         size=opts.graph_size, num_samples=opts.epoch_size, distribution=opts.data_distribution)
-    
-    # Generate the training data
-    training_dataset = baseline.wrap_dataset(val_dataset)
 
     if opts.resume:
         epoch_resume = int(os.path.splitext(os.path.split(opts.resume)[-1])[0].split("-")[1])
@@ -168,8 +165,7 @@ def run(opts):
                 val_dataset,
                 problem,
                 tb_logger,
-                opts,
-                training_dataset
+                opts
             )
 
 
