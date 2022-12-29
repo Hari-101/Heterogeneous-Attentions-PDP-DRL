@@ -93,6 +93,8 @@ class PDP_cap_Dataset(Dataset):
             self.data = [make_instance(args) for args in data[offset:offset+num_samples]]
 
         else:
+            
+            
 
               # # From VRP with RL paper https://arxiv.org/abs/1802.04240
               # CAPACITIES = {
@@ -102,9 +104,13 @@ class PDP_cap_Dataset(Dataset):
               #     100: 50.
               # }         #For adjusting the average number of orders that can be loaded on the resource at a time
 
-            self.data=[]    
+            self.data=[]
+            min_weight=1/(1.2*(size/2)) #For 20 orders - 0.0417, 10 orders - 0.08
+            max_weight=1/(0.25*(size/2)) #For 20 orders - 0.2, 10 orders - 0.4
             for i in range(num_samples):
-                interim_demand = (torch.FloatTensor(size//2).uniform_(0, 1))/size/2
+                #min-> 1/(1.2 x n_orders)
+                #max-> 1/(0.25 x n_orders)
+                interim_demand = (torch.FloatTensor(size//2).uniform_(min_weight, max_weight))
                 instance = {
 
                         #'loc' refers to the initial location of the resource

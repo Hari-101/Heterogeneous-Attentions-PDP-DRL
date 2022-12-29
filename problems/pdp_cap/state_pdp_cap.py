@@ -54,7 +54,7 @@ class StatePDP_cap(NamedTuple):
                 cur_coord=self.cur_coord[key],
                 to_delivery=self.to_delivery[key],
             )
-        return super(StatePDP_cap, self).__getitem__(key)
+        return object.__getitem__(key)
 
     # Warning: cannot override len of NamedTuple, len should be number of fields, not batch size
     # def __len__(self):
